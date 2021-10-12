@@ -1,0 +1,42 @@
+$backColorInput: #FFFFFF;
+$backColorString: #eea467;
+$backColorNumber: #bf3fcf;
+$darkScreenHybrid: rgb(0, 0, 0);
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:row;
+    height: 100vh;
+    width: 100vw;
+};
+
+.inputData {
+    background-color: $backColorInput;
+    width: 50%;
+};
+
+.stringData {
+    background-color: $backColorString;
+    width: 50%;
+};
+
+.numberData {
+    background-color: $backColorNumber;
+    width: 50%;
+};
+
+.hybridData {
+    background-color: $darkScreenHybrid;
+    width: 50%;
+    color: white;
+};
