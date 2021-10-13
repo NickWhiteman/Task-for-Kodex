@@ -29,7 +29,7 @@ body {
   -ms-grid-columns: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   height: 100vh;
-  min-width: 1200px;
+  min-width: 1900px;
 }
 
 .appBoard > *:nth-child(1) {

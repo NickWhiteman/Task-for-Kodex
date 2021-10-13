@@ -5,18 +5,32 @@ import { StringComponent } from './components/StringComponent';
 import './style/style.css';
 
 function App() {
-  const [words, setWords] = useState([]);
-  const [numbers, setNumbers] = useState([]);
-  const [hybrid, setHybrid] = useState([]);
+  const stringArray: string[] = [];
+  const numberArray: number[] = [];
+  const hybridArray: string[] = [];
+  const [words, setWord] = useState(stringArray);
+  const [numbers, setNumbers] = useState(numberArray);
+  const [hybrid, setHybrid] = useState(hybridArray);
 
   const inputChangeHandler = (event: any) => {
+    const value = event.target.value
+    const temp: number = Number(value);
     if (event.key === "Enter") {
-      if (event.target.value === /[0-9]/) {
-        console.log('number', event.target.value);
-      } else if (event.target.value === /[0-9A-Za-z]/) {
-        console.log('hybrid', event.target.value)
-      } else {
-        console.log('string', event.target.value);
+      if (value.match(/[0-9]/) && isNaN(temp)) {
+        hybridArray.push(value);
+        setHybrid(hybridArray);
+        console.log(hybridArray);
+        
+      } else if (typeof temp === 'number' && !value.match(/[A-Za-zА-Яа-я]/)) {
+        numberArray.push(temp);
+        setNumbers(numberArray)
+        console.log(numberArray);
+
+      } else if (isNaN(temp)) {
+        stringArray.push(value);
+        setWord(stringArray);
+        console.log(stringArray);
+        
       };
     };
   };
@@ -29,13 +43,13 @@ function App() {
           <input type="text" onKeyPress={(event) => {inputChangeHandler(event)}} />
         </div>
         <div className="stringData">
-          <StringComponent />
+          <StringComponent stringData={ words } />
         </div>
         <div className="numberData">
-          <NumberComponent />
+          <NumberComponent numberData={ numbers } />
         </div>
         <div className="hybridData">
-          <HybridComponent />
+          <HybridComponent hybridData={ hybrid }/>
         </div>
       </div>
     </div>
