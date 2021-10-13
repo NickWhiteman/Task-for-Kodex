@@ -1,38 +1,28 @@
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { HybridComponent } from './components/HybridComponent';
 import { NumberComponent } from './components/NumberComponent';
 import { StringComponent } from './components/StringComponent';
+import { AppAction } from './reducer';
 import './style/style.css';
 
 function App() {
-  const stringArray: string[] = [];
-  const numberArray: number[] = [];
-  const hybridArray: string[] = [];
-  const [words, setWord] = useState(stringArray);
-  const [numbers, setNumbers] = useState(numberArray);
-  const [hybrid, setHybrid] = useState(hybridArray);
+  const dispatch = useDispatch();
+
+  const valueValidation = (value: string) => {
+    const temp: number = Number(value);
+
+    if (value.match(/[0-9]/) && isNaN(temp)) {
+      dispatch(AppAction.setHybrids(value));        
+    } else if (typeof temp === 'number' && !value.match(/[A-Za-zА-Яа-я]/)) {
+      dispatch(AppAction.setNumbers(temp));
+    } else if (isNaN(temp)) {
+      dispatch(AppAction.setWords(value));        
+    };
+  };
 
   const inputChangeHandler = (event: any) => {
-    const value = event.target.value
-    const temp: number = Number(value);
-    if (event.key === "Enter") {
-      if (value.match(/[0-9]/) && isNaN(temp)) {
-        hybridArray.push(value);
-        setHybrid(hybridArray);
-        console.log(hybridArray);
-        
-      } else if (typeof temp === 'number' && !value.match(/[A-Za-zА-Яа-я]/)) {
-        numberArray.push(temp);
-        setNumbers(numberArray)
-        console.log(numberArray);
-
-      } else if (isNaN(temp)) {
-        stringArray.push(value);
-        setWord(stringArray);
-        console.log(stringArray);
-        
-      };
-    };
+    if (event.key === "Enter")
+      valueValidation(event.target.value);
   };
 
   return (
@@ -40,16 +30,16 @@ function App() {
       <div className='header'></div>
       <div className="appBoard">
         <div className="inputData">
-          <input type="text" onKeyPress={(event) => {inputChangeHandler(event)}} />
+          <input type="text" onKeyDown={(event) => {inputChangeHandler(event)}} />
         </div>
         <div className="stringData">
-          <StringComponent stringData={ words } />
+          <StringComponent />
         </div>
         <div className="numberData">
-          <NumberComponent numberData={ numbers } />
+          <NumberComponent />
         </div>
         <div className="hybridData">
-          <HybridComponent hybridData={ hybrid }/>
+          <HybridComponent />
         </div>
       </div>
     </div>

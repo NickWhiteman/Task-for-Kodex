@@ -1,13 +1,15 @@
-import { NumberProps } from "./types";
+import { useSelector } from "react-redux";
+import { getNumbers } from "../selectors";
+import { RootState } from "../store";
 
-export const NumberComponent: React.FC<NumberProps> = ({
-  numberData
-}) => {
+export const NumberComponent: React.FC = () => {
+  const numberData: number[] = useSelector((state: RootState) => getNumbers(state.appStore));
+
   return (
     <>
       {
-        numberData.map((num, index) => (
-          <li key={index}>{ num }</li>
+        numberData?.map((num, index) => (
+          <dd key={index}>{ num }</dd>
         ))
       }
     </>

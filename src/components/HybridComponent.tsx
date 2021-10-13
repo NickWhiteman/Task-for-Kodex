@@ -1,13 +1,15 @@
-import { HybridProps } from "./types";
+import { useSelector } from "react-redux";
+import { getHybrids } from "../selectors";
+import { RootState } from "../store";
 
-export const HybridComponent: React.FC<HybridProps> = ({
-  hybridData
-}) => {
+export const HybridComponent: React.FC = () => {
+  const hybridData: string[] = useSelector((state: RootState) => getHybrids(state.appStore));
+
   return (
     <>
       {
-        hybridData.map((hybrid, index) => (
-          <li key={index}>{hybrid}</li>
+        hybridData?.map((hybrid, index) => (
+          <dd key={index}>{hybrid}</dd>
         ))
       }
     </>

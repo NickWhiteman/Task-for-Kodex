@@ -1,14 +1,14 @@
-import React from 'react';
-import { StringProps } from './types';
+import { useSelector } from "react-redux";
+import { getWords } from "../selectors";
+import { RootState } from "../store";
 
-export const StringComponent: React.FC<StringProps> = ({
-  stringData
-}) => {
+export const StringComponent: React.FC = () => {
+  const stringData: string[]= useSelector((state: RootState) => getWords(state.appStore));
   return (
     <>
       {
-        stringData.map((word, index) => (
-          <li key={index}>{ word }</li>
+        stringData?.map((word, index) => (
+          <dd key={index}>{ word }</dd>
         ))
       }
     </>

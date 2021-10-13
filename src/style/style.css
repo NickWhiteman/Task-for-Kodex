@@ -18,10 +18,9 @@ body {
       -ms-flex-direction: row;
           flex-direction: row;
   height: 100vh;
-  width: 100vw;
+  max-width: 1900px;
 }
-
-.appBoard {
+body .appBoard {
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: 1fr 1fr;
@@ -29,33 +28,32 @@ body {
   -ms-grid-columns: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   height: 100vh;
-  min-width: 1900px;
+  min-width: 1400px;
 }
-
-.appBoard > *:nth-child(1) {
+body .appBoard > *:nth-child(1) {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
 }
-
-.appBoard > *:nth-child(2) {
+body .appBoard > *:nth-child(2) {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
 }
-
-.appBoard > *:nth-child(3) {
+body .appBoard > *:nth-child(3) {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
 }
-
-.appBoard > *:nth-child(4) {
+body .appBoard > *:nth-child(4) {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
 }
-
-.inputData {
+body .inputData {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -64,11 +62,14 @@ body {
           align-items: center;
   background-color: #FFFFFF;
 }
-
-.stringData {
+body .stringData {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -76,12 +77,16 @@ body {
       -ms-flex-align: center;
           align-items: center;
   background-color: #eea467;
+  color: white;
 }
-
-.numberData {
+body .numberData {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -89,12 +94,16 @@ body {
       -ms-flex-align: center;
           align-items: center;
   background-color: #bf3fcf;
+  color: white;
 }
-
-.hybridData {
+body .hybridData {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
