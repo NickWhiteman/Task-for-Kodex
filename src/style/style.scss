@@ -20,23 +20,39 @@ body {
     width: 100vw;
 };
 
+.appBoard {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+    min-width: 1200px;
+}
+
 .inputData {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: $backColorInput;
-    width: 50%;
 };
 
 .stringData {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: $backColorString;
-    width: 50%;
 };
 
 .numberData {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: $backColorNumber;
-    width: 50%;
 };
 
 .hybridData {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: $darkScreenHybrid;
-    width: 50%;
     color: white;
 };
