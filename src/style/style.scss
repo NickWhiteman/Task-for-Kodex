@@ -17,26 +17,49 @@ body {
     flex-wrap: wrap;
     flex-direction:row;
     height: 100vh;
-    width: 100vw;
+    max-width: 1900px;
+    
+    .appBoard {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        height: 100vh;
+        min-width: 1400px;
+    }
+    
+    .inputData {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $backColorInput;
+    };
+    
+    .stringData {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $backColorString;
+        color: white;
+    };
+    
+    .numberData {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $backColorNumber;
+        color: white;
+    };
+    
+    .hybridData {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $darkScreenHybrid;
+        color: white;
+    };
 };
 
-.inputData {
-    background-color: $backColorInput;
-    width: 50%;
-};
-
-.stringData {
-    background-color: $backColorString;
-    width: 50%;
-};
-
-.numberData {
-    background-color: $backColorNumber;
-    width: 50%;
-};
-
-.hybridData {
-    background-color: $darkScreenHybrid;
-    width: 50%;
-    color: white;
-};
