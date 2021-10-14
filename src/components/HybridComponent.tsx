@@ -8,7 +8,7 @@ export const HybridComponent: React.FC = () => {
   return (
     <>
       {
-        hybridData?.map((hybrid, index) => (
+        hybridData.map((hybrid, index) => (
           <dd key={index}>{hybrid}</dd>
         ))
       }

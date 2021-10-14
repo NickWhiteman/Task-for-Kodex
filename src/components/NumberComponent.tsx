@@ -8,7 +8,7 @@ export const NumberComponent: React.FC = () => {
   return (
     <>
       {
-        numberData?.map((num, index) => (
+        numberData.map((num, index) => (
           <dd key={index}>{ num }</dd>
         ))
       }
