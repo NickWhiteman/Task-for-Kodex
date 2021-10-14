@@ -13,18 +13,13 @@ $darkScreenHybrid: rgb(0, 0, 0);
 }
 
 body {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction:row;
-    height: 100vh;
-    max-width: auto;
+    height: 100vh - 45px;
     
     .appBoard {
         display: grid;
         grid-template-rows: 50% 50%;
         grid-template-columns: 50% 50%;
         height: 100vh;
-        min-width: 1400px;
     }
 
     .header {
