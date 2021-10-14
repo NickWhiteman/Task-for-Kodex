@@ -9,7 +9,7 @@ export const AppBoard: React.FC = () => {
   const dispatch = useDispatch();
 
   const sortTimeAddition = (array: string[]) => {
-    array.sort(() => );
+    // array.sort(() => );
   };
 
   const valueValidation = (value: string) => {
@@ -24,7 +24,7 @@ export const AppBoard: React.FC = () => {
     } else if (
       typeof temp === 'number' &&
       !exceptionForNumbers.test(value) &&
-      !!exceptionForInput.test(value)
+      !exceptionForInput.test(value)
     ) {
       dispatch(AppAction.setNumbers(value));
     } else if (
@@ -36,7 +36,7 @@ export const AppBoard: React.FC = () => {
   };
 
   const inputChangeHandler = (event: any) => {
-    const value = event.target.value;
+    const value = event.target.value.trim();
     if (event.key === "Enter" && value !== '') {
       valueValidation(value);
       event.target.value = '';
