@@ -12,7 +12,7 @@ export const AppBoard: React.FC = () => {
 
     if (value.match(/[0-9]/) && isNaN(temp)) {
       dispatch(AppAction.setHybrids(value));        
-    } else if (typeof temp === 'number' && !value.match(/[A-Za-zА-Яа-я]/)) {
+    } else if (typeof temp === 'number' && !value.match(/[A-Za-zА-Яа-яЁё]/)) {
       dispatch(AppAction.setNumbers(temp));
     } else if (isNaN(temp)) {
       dispatch(AppAction.setWords(value));
@@ -20,14 +20,15 @@ export const AppBoard: React.FC = () => {
   };
 
   const inputChangeHandler = (event: any) => {
-    if (event.key === "Enter")
-      valueValidation(event.target.value);
+    const value = event.target.value;
+    if (event.key === "Enter" && value !== '')
+      valueValidation(value);
   };
 
   return (
     <div className="appBoard">
       <div className="inputData">
-        <input type="text" onKeyDown={(event) => {inputChangeHandler(event)}} />
+        <input type="text" required onKeyDown={(event) => {inputChangeHandler(event)}} />
       </div>
       <div className="stringData">
         <StringComponent />
