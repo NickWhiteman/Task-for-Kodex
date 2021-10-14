@@ -8,17 +8,7 @@
 }
 
 body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
   height: 100vh;
-  max-width: auto;
 }
 body .appBoard {
   display: -ms-grid;
@@ -28,7 +18,7 @@ body .appBoard {
   -ms-grid-columns: 50% 50%;
   grid-template-columns: 50% 50%;
   height: 100vh;
-  min-width: 1400px;
+  min-width: 1280px;
 }
 body .appBoard > *:nth-child(1) {
   -ms-grid-row: 1;
@@ -73,6 +63,9 @@ body .inputData {
       -ms-flex-align: center;
           align-items: center;
   background-color: #FFFFFF;
+}
+body .inputData input {
+  width: 200px;
 }
 body .stringData {
   display: -webkit-box;

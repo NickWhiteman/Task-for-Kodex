@@ -6,15 +6,27 @@ import { StringComponent } from "./StringComponent"
 
 export const AppBoard: React.FC = () => {
   const dispatch = useDispatch();
+  const exceptionForNumbers = /[A-Za-zА-Яа-яЁё{}\\'><!@£$%^&*()_+?`#=€¡¢∞§¶[\]]/;
+  const exceptionForInput = /[{}\\'><!@£$%^&*()_+`#=€¡¢?∞§¶§[\]]/;
 
   const valueValidation = (value: string) => {
     const temp: number = Number(value);
 
-    if (value.match(/[0-9]/) && isNaN(temp)) {
-      dispatch(AppAction.setHybrids(value));        
-    } else if (typeof temp === 'number' && !value.match(/[A-Za-zА-Яа-яЁё]/)) {
+    if (
+      value.match(/[0-9]/) &&
+      isNaN(temp) &&
+      !exceptionForInput.test(value)
+    ) {
+      dispatch(AppAction.setHybrids(value));
+    } else if (
+      typeof temp === 'number' &&
+      !exceptionForNumbers.test(value)
+    ) {
       dispatch(AppAction.setNumbers(value));
-    } else if (isNaN(temp)) {
+    } else if (
+      isNaN(temp) &&
+      !exceptionForInput.test(value)
+    ) {
       dispatch(AppAction.setWords(value));
     };
   };
