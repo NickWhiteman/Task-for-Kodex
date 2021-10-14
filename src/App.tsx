@@ -27,7 +27,13 @@ function App() {
 
   return (
     <div className='app'>
-      <div className='header'></div>
+      <div className='header'>
+        <select>
+          <option disabled>Sorts</option>
+          <option>Sort by time of addition</option>
+          <option>Sort alphabetically</option>
+        </select>
+      </div>
       <div className="appBoard">
         <div className="inputData">
           <input type="text" onKeyDown={(event) => {inputChangeHandler(event)}} />
