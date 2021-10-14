@@ -13,7 +13,7 @@ export const AppBoard: React.FC = () => {
     if (value.match(/[0-9]/) && isNaN(temp)) {
       dispatch(AppAction.setHybrids(value));        
     } else if (typeof temp === 'number' && !value.match(/[A-Za-zА-Яа-яЁё]/)) {
-      dispatch(AppAction.setNumbers(temp));
+      dispatch(AppAction.setNumbers(value));
     } else if (isNaN(temp)) {
       dispatch(AppAction.setWords(value));
     };
@@ -21,8 +21,10 @@ export const AppBoard: React.FC = () => {
 
   const inputChangeHandler = (event: any) => {
     const value = event.target.value;
-    if (event.key === "Enter" && value !== '')
+    if (event.key === "Enter" && value !== '') {
       valueValidation(value);
+      event.target.value = '';
+    };
   };
 
   return (
