@@ -3,7 +3,7 @@ import { getNumbers } from "../selectors";
 import { RootState } from "../store";
 
 export const NumberComponent: React.FC = () => {
-  const numberData: number[] = useSelector((state: RootState) => getNumbers(state.appStore));
+  const numberData: string[] = useSelector((state: RootState) => getNumbers(state.appStore));
 
   return (
     <>

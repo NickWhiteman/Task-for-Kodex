@@ -1,5 +1,5 @@
 export interface IAppState {
   words: string[]
-  numbers: number[]
+  numbers: string[]
   hybrids: string[]
 };

@@ -1,2 +1,0 @@
-export var AppBoard = function () {
-};

@@ -15,7 +15,7 @@ const AppStore = createSlice({
     setWords(state, {payload}: PayloadAction<string>) {
       state.words.push(payload);
     },
-    setNumbers(state, { payload }: PayloadAction<number>) {
+    setNumbers(state, { payload }: PayloadAction<string>) {
       state.numbers.push(payload);
     },
     setHybrids(state, { payload }: PayloadAction<string>) {
@@ -24,7 +24,7 @@ const AppStore = createSlice({
     setSortWords(state, { payload }: PayloadAction<string[]>) {
       state.words = payload;
     },
-    setSortNumbers(state, { payload }: PayloadAction<number[]>) {
+    setSortNumbers(state, { payload }: PayloadAction<string[]>) {
       state.numbers = payload;
     },
     setSortHybrids(state, { payload }: PayloadAction<string[]>) {

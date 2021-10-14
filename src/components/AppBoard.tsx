@@ -6,28 +6,43 @@ import { StringComponent } from "./StringComponent"
 
 export const AppBoard: React.FC = () => {
   const dispatch = useDispatch();
+  const exceptionForNumbers = /[A-Za-zА-Яа-яЁё{}\\'><!@£$%^&*()_+?`#=€¡¢∞§¶[\]]/;
+  const exceptionForInput = /[{}\\'><!@£$%^&*()_+`#=€¡¢?∞§¶§[\]]/;
 
   const valueValidation = (value: string) => {
     const temp: number = Number(value);
 
-    if (value.match(/[0-9]/) && isNaN(temp)) {
-      dispatch(AppAction.setHybrids(value));        
-    } else if (typeof temp === 'number' && !value.match(/[A-Za-zА-Яа-я]/)) {
-      dispatch(AppAction.setNumbers(temp));
-    } else if (isNaN(temp)) {
+    if (
+      value.match(/[0-9]/) &&
+      isNaN(temp) &&
+      !exceptionForInput.test(value)
+    ) {
+      dispatch(AppAction.setHybrids(value));
+    } else if (
+      typeof temp === 'number' &&
+      !exceptionForNumbers.test(value)
+    ) {
+      dispatch(AppAction.setNumbers(value));
+    } else if (
+      isNaN(temp) &&
+      !exceptionForInput.test(value)
+    ) {
       dispatch(AppAction.setWords(value));
     };
   };
 
   const inputChangeHandler = (event: any) => {
-    if (event.key === "Enter")
-      valueValidation(event.target.value);
+    const value = event.target.value;
+    if (event.key === "Enter" && value !== '') {
+      valueValidation(value);
+      event.target.value = '';
+    };
   };
 
   return (
     <div className="appBoard">
       <div className="inputData">
-        <input type="text" onKeyDown={(event) => {inputChangeHandler(event)}} />
+        <input type="text" required onKeyDown={(event) => {inputChangeHandler(event)}} />
       </div>
       <div className="stringData">
         <StringComponent />
