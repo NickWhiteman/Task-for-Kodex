@@ -47,6 +47,7 @@ body {
         align-items: center;
         background-color: $backColorString;
         color: white;
+        overflow-x: scroll;
     };
     
     .numberData {

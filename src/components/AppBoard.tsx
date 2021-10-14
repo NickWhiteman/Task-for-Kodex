@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { exceptionForInput, exceptionForNumbers } from "../const";
 import { AppAction } from "../reducer";
 import { HybridComponent } from "./HybridComponent"
 import { NumberComponent } from "./NumberComponent"
@@ -6,8 +7,10 @@ import { StringComponent } from "./StringComponent"
 
 export const AppBoard: React.FC = () => {
   const dispatch = useDispatch();
-  const exceptionForNumbers = /[A-Za-zА-Яа-яЁё{}\\'><!@£$%^&*()_+?`#=€¡¢∞§¶[\]]/;
-  const exceptionForInput = /[{}\\'><!@£$%^&*()_+`#=€¡¢?∞§¶§[\]]/;
+
+  const sortTimeAddition = (array: string[]) => {
+    array.sort(() => );
+  };
 
   const valueValidation = (value: string) => {
     const temp: number = Number(value);
@@ -20,7 +23,8 @@ export const AppBoard: React.FC = () => {
       dispatch(AppAction.setHybrids(value));
     } else if (
       typeof temp === 'number' &&
-      !exceptionForNumbers.test(value)
+      !exceptionForNumbers.test(value) &&
+      !!exceptionForInput.test(value)
     ) {
       dispatch(AppAction.setNumbers(value));
     } else if (
