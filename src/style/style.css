@@ -18,15 +18,15 @@ body {
       -ms-flex-direction: row;
           flex-direction: row;
   height: 100vh;
-  max-width: 1900px;
+  max-width: auto;
 }
 body .appBoard {
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  -ms-grid-columns: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 50% 50%;
+  grid-template-rows: 50% 50%;
+  -ms-grid-columns: 50% 50%;
+  grid-template-columns: 50% 50%;
   height: 100vh;
   min-width: 1400px;
 }
@@ -45,6 +45,18 @@ body .appBoard > *:nth-child(3) {
 body .appBoard > *:nth-child(4) {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
+}
+body .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+body .sort-select {
+  height: 45px;
+  padding: 10px 0 10px 0;
 }
 body .inputData {
   display: -webkit-box;
