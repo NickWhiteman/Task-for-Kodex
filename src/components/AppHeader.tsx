@@ -1,39 +1,41 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AppAction } from "../reducer";
-import { getIsSortAlphabet, getIsSortTime } from "../selectors";
+import { getIsSortAlphabet, getIsSortTime, } from "../selectors";
 import { RootState } from "../store";
 
 export const AppHeader: React.FC = () => {
   const dispatch = useDispatch();
-
   const isSortTime = useSelector((state: RootState) =>
     getIsSortTime(state.appStore));
-  
   const isSortAlphabet = useSelector((state: RootState) =>
     getIsSortAlphabet(state.appStore));
 
   const sortTime = () => {
-    isSortTime &&
+    if (isSortTime)
       dispatch(AppAction.setSortTime());
 
-    isSortAlphabet &&
+    if (isSortAlphabet)
       dispatch(AppAction.setSortAlphabet());
     
     dispatch(AppAction.setSortTime());
   };
 
   const sortAlphabet = () => {
-    isSortTime &&
+    if (isSortAlphabet)
+    dispatch(AppAction.setSortAlphabet());
+
+    if (isSortTime)
       dispatch(AppAction.setSortTime());
 
     dispatch(AppAction.setSortAlphabet());
+
   };
 
   return (
     <div className='header'>
       {/* <select className='sort-select'> */}
-        <button onClick={sortTime}>Sort by time of addition</button>
-        <button onClick={sortAlphabet}>Sort alphabetically</button>
+        <button onClick={sortTime}>Sort by time</button>
+        <button onClick={sortAlphabet}>Sort by alphabetically</button>
       {/* </select> */}
     </div>
   )

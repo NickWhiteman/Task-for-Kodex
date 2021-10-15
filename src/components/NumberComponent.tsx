@@ -17,27 +17,19 @@ export const NumberComponent: React.FC = () => {
     <dd key={index + 1}>{ num }</dd>
   );
 
-  // const renderJSX = (
-  //   renderList: string[],
-  //   insertHtml: (name: string, index: number) => JSX.Element
-  // ) => {
-  //   if(isSortTime)
-  //     return numberData.reverse().map((name, index) =>
-  //       insertHtml(name, index));
-  //   if (isSortAlphabet)
-  //     return numberData.sort((a, b) => a > b ? 1 : -1).map((name, index) =>
-  //       insertHtml(name, index));
-  // };
+  const renderHtml = () => {
+    return renderJSX(
+      numberData,
+      insertHtml,
+      isSortTime,
+      isSortAlphabet
+    );
+  };
 
   return (
     <>
       {
-        renderJSX(
-          numberData,
-          insertHtml,
-          isSortTime,
-          isSortAlphabet
-        )
+        renderHtml()
       }
     </>
   )
