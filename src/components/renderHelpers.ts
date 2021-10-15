@@ -1,15 +1,8 @@
 export const renderJSX = (
     renderList: string[],
     insertHtml: (name: string, index: number) => JSX.Element,
-    isSortTime: boolean,
-    isSortAlphabet: boolean
 ) => {
-    if (isSortTime) {
-        return renderList.map((name, index) => insertHtml(name, index));
-    }
-    if (isSortAlphabet) {
-        return renderList.map((name, index) => insertHtml(name, index)) 
-    }
+    return renderList.map((name, index) => insertHtml(name, index));
 };
 
 // const customSorting = (a: string, b: string) => {

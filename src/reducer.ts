@@ -6,8 +6,6 @@ const initialState: IAppState = {
   words: [],
   numbers: [],
   hybrids: [],
-  isSortTime: true,
-  isSortAlphabet: false
 };
 
 const AppStore = createSlice({
@@ -23,11 +21,14 @@ const AppStore = createSlice({
     setHybrids(state, { payload }: PayloadAction<string>) {
       state.hybrids.push(payload);
     },
-    setSortTime(state) {
-      state.isSortTime = !state.isSortTime;
+    setSortWords(state, { payload }: PayloadAction<string[]>) {
+      state.words = [...payload];
     },
-    setSortAlphabet(state) {
-      state.isSortAlphabet = !state.isSortTime;
+    setSortNumbers(state, { payload }: PayloadAction<string[]>) {
+      state.numbers = [...payload];
+    },
+    setSortHybrids(state, { payload }: PayloadAction<string[]>) {
+      state.hybrids = [...payload];
     }
   }
 });

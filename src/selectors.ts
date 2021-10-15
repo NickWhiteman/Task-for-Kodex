@@ -1,3 +1,4 @@
+import { RootState } from "./store";
 import { IAppState } from "./types";
 
 export const getWords = (state: IAppState): string[] =>
@@ -9,8 +10,5 @@ export const getNumbers = (state: IAppState): string[] =>
 export const getHybrids = (state: IAppState): string[] =>
   state.hybrids;
 
-export const getIsSortTime = (state: IAppState): boolean =>
-  state.isSortTime;
-
-export const getIsSortAlphabet = (state: IAppState): boolean =>
-  state.isSortAlphabet;
+export const getStore = (state: RootState) =>
+  state.appStore;
