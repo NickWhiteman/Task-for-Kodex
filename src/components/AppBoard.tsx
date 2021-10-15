@@ -7,11 +7,7 @@ import { StringComponent } from "./StringComponent"
 
 export const AppBoard: React.FC = () => {
   const dispatch = useDispatch();
-
-  const sortTimeAddition = (array: string[]) => {
-    // array.sort(() => );
-  };
-
+  
   const valueValidation = (value: string) => {
     const temp: number = Number(value);
 
