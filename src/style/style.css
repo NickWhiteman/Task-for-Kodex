@@ -7,9 +7,6 @@
   letter-spacing: 0.02em;
 }
 
-body {
-  height: 100vh;
-}
 body .appBoard {
   display: -ms-grid;
   display: grid;
@@ -17,21 +14,24 @@ body .appBoard {
   grid-template-rows: 50% 50%;
   -ms-grid-columns: 50% 50%;
   grid-template-columns: 50% 50%;
-  height: 100vh;
-  min-width: 1280px;
+  min-height: 97vh;
 }
+
 body .appBoard > *:nth-child(1) {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
 }
+
 body .appBoard > *:nth-child(2) {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
 }
+
 body .appBoard > *:nth-child(3) {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
 }
+
 body .appBoard > *:nth-child(4) {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
@@ -43,6 +43,18 @@ body .header {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  height: 28px;
+}
+body .button {
+  border: none;
+  padding: 0 5px 0 5px;
+}
+body .button.true {
+  background-color: #233a49;
+  color: white;
+}
+body .button.false {
+  background-color: #57809b;
 }
 body .sort-select {
   height: 45px;
@@ -64,9 +76,6 @@ body .inputData {
           align-items: center;
   background-color: #FFFFFF;
 }
-body .inputData input {
-  width: 200px;
-}
 body .stringData {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -82,7 +91,9 @@ body .stringData {
       -ms-flex-align: center;
           align-items: center;
   background-color: #eea467;
-  color: white;
+  color: black;
+  overflow-y: scroll;
+  overflow-x: scroll;
 }
 body .numberData {
   display: -webkit-box;
@@ -99,7 +110,9 @@ body .numberData {
       -ms-flex-align: center;
           align-items: center;
   background-color: #bf3fcf;
-  color: white;
+  color: #ffffff;
+  overflow-y: scroll;
+  overflow-x: scroll;
 }
 body .hybridData {
   display: -webkit-box;
@@ -117,4 +130,6 @@ body .hybridData {
           align-items: center;
   background-color: black;
   color: white;
+  overflow-y: scroll;
+  overflow-x: scroll;
 }

@@ -5,7 +5,9 @@ const STORE_NAME = '@app';
 const initialState: IAppState = {
   words: [],
   numbers: [],
-  hybrids: []
+  hybrids: [],
+  isSortTime: true,
+  isSortAlphabet: false
 };
 
 const AppStore = createSlice({
@@ -13,22 +15,34 @@ const AppStore = createSlice({
   initialState,
   reducers: {
     setWords(state, {payload}: PayloadAction<string>) {
-      state.words.push(payload);
+      // typeof payload === 'string'
+      state.words.push(payload)
+      // : state.words = [...payload]
     },
     setNumbers(state, { payload }: PayloadAction<string>) {
-      state.numbers.push(payload);
+      // typeof payload === 'string'
+        state.numbers.push(payload)
+        // : state.numbers = [...payload]
     },
     setHybrids(state, { payload }: PayloadAction<string>) {
-      state.hybrids.push(payload);
+      // typeof payload === 'string'
+      state.hybrids.push(payload)
+      // : state.hybrids = [...payload]
     },
-    setSortWords(state, { payload }: PayloadAction<string[]>) {
+    setWordsList(state, { payload }: PayloadAction<string[]>) {
       state.words = payload;
     },
-    setSortNumbers(state, { payload }: PayloadAction<string[]>) {
+    setNumbersList(state, { payload }: PayloadAction<string[]>) {
       state.numbers = payload;
     },
-    setSortHybrids(state, { payload }: PayloadAction<string[]>) {
+    setHybridsList(state, { payload }: PayloadAction<string[]>) {
       state.hybrids = payload;
+    },
+    setSortTime(state) {
+      state.isSortTime = !state.isSortTime;
+    },
+    setSortAlphabet(state) {
+      state.isSortAlphabet = !state.isSortAlphabet;
     }
   }
 });

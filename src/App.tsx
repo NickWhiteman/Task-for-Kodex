@@ -9,6 +9,6 @@ function App() {
       <AppBoard />
     </div>
   );
-}
+};
 
 export default App;

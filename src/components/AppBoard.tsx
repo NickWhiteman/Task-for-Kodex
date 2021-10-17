@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { exceptionForInput, exceptionForNumbers } from "../const";
 import { AppAction } from "../reducer";
 import { HybridComponent } from "./HybridComponent"
 import { NumberComponent } from "./NumberComponent"
@@ -6,25 +7,22 @@ import { StringComponent } from "./StringComponent"
 
 export const AppBoard: React.FC = () => {
   const dispatch = useDispatch();
-  const exceptionForNumbers = /[A-Za-zА-Яа-яЁё{}\\'><!@£$%^&*()_+?`#=€¡¢∞§¶[\]]/;
-  const exceptionForInput = /[{}\\'><!@£$%^&*()_+`#=€¡¢?∞§¶§[\]]/;
-
+  
   const valueValidation = (value: string) => {
-    const temp: number = Number(value);
-
     if (
-      value.match(/[0-9]/) &&
-      isNaN(temp) &&
-      !exceptionForInput.test(value)
+      /[0-9]/.test(value) &&
+      !exceptionForInput.test(value) &&
+      exceptionForNumbers.test(value)
     ) {
       dispatch(AppAction.setHybrids(value));
     } else if (
-      typeof temp === 'number' &&
-      !exceptionForNumbers.test(value)
+      /[0-9]/.test(value) &&
+      !exceptionForNumbers.test(value) &&
+      !exceptionForInput.test(value)
     ) {
       dispatch(AppAction.setNumbers(value));
     } else if (
-      isNaN(temp) &&
+      exceptionForNumbers.test(value) &&
       !exceptionForInput.test(value)
     ) {
       dispatch(AppAction.setWords(value));
@@ -32,7 +30,7 @@ export const AppBoard: React.FC = () => {
   };
 
   const inputChangeHandler = (event: any) => {
-    const value = event.target.value;
+    const value = event.target.value.trim();
     if (event.key === "Enter" && value !== '') {
       valueValidation(value);
       event.target.value = '';
