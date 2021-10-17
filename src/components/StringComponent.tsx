@@ -1,25 +1,25 @@
 import { useSelector } from "react-redux";
-import { getIsSortAlphabet, getIsSortTime, getWords } from "../selectors";
+import { getWords } from "../selectors";
 import { RootState } from "../store";
 import { renderJSX } from "./renderHelpers";
 
-export const StringComponent: React.FC = () => {
+type WortProps = {
+  isSortTime: boolean
+  isSortAlphabet: boolean
+}
+
+export const StringComponent: React.FC<WortProps> = ({
+  isSortTime,
+  isSortAlphabet
+}) => {
   const stringData: string[] = useSelector((state: RootState) =>
     getWords(state.appStore));
   
   const renderWords: string[] = stringData.filter((item, index) => 
     stringData.indexOf(item) === index
   );
-
-  const isSortTime: boolean = useSelector((state: RootState) =>
-    getIsSortTime(state.appStore));
-  
-  const isSortAlphabet: boolean = useSelector((state: RootState) =>
-    getIsSortAlphabet(state.appStore));
-  
     
-    
-  const countRepeatWords = (word: string) => {
+  const countRepeatWords = (word: string | number) => {
     let count = 0;
     stringData.forEach(item => item === word && count++)
     if (count > 1)
@@ -29,7 +29,7 @@ export const StringComponent: React.FC = () => {
     else return <></>
   };
       
-  const insertHtml = (word: string, index: number): JSX.Element => (
+  const insertHtml = (word: string | number, index: number): JSX.Element => (
     <dd key={index}>
       {word}
       {countRepeatWords(word)}

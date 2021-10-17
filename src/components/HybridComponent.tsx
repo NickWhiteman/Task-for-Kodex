@@ -1,17 +1,19 @@
 import { useSelector } from "react-redux";
-import { getHybrids, getIsSortAlphabet, getIsSortTime } from "../selectors";
+import { getHybrids } from "../selectors";
 import { RootState } from "../store";
 import { renderJSX } from "./renderHelpers";
 
-export const HybridComponent: React.FC = () => {
+type HybridProps = {
+  isSortTime: boolean
+  isSortAlphabet: boolean
+}
+
+export const HybridComponent: React.FC<HybridProps> = ({
+  isSortTime,
+  isSortAlphabet
+}) => {
   const hybridData: string[] = useSelector((state: RootState) =>
     getHybrids(state.appStore));
-
-  const isSortTime: boolean = useSelector((state: RootState) =>
-    getIsSortTime(state.appStore));
-  
-  const isSortAlphabet: boolean = useSelector((state: RootState) =>
-    getIsSortAlphabet(state.appStore));
 
     // const renderJSX = (
     //   renderList: string[] = [],
@@ -31,7 +33,7 @@ export const HybridComponent: React.FC = () => {
     //     insertHtml(name, index));
     // };
   
-  const insertHtml = (hybrid: string, index: number): JSX.Element => (
+  const insertHtml = (hybrid: string | number, index: number): JSX.Element => (
     <dd key={index + 1}>{hybrid}</dd>
   );
 

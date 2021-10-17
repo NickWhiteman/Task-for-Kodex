@@ -1,19 +1,21 @@
 import React from 'react';
 import { useSelector } from "react-redux";
-import { getIsSortAlphabet, getIsSortTime, getNumbers } from "../selectors";
+import { getNumbers } from "../selectors";
 import { RootState } from "../store";
 import { renderJSX } from './renderHelpers';
 
-export const NumberComponent: React.FC = () => {
-  const numberData: string[] = useSelector((state: RootState) => getNumbers(state.appStore));
+type NumbersProps = {
+  isSortTime: boolean
+  isSortAlphabet: boolean
+}
 
-  const isSortTime: boolean = useSelector((state: RootState) =>
-    getIsSortTime(state.appStore));
+export const NumberComponent: React.FC<NumbersProps> = ({
+  isSortTime,
+  isSortAlphabet
+}) => {
+  const numberData: number[] | string[] = useSelector((state: RootState) => getNumbers(state.appStore));
 
-  const isSortAlphabet: boolean = useSelector((state: RootState) =>
-    getIsSortAlphabet(state.appStore));
-  
-  const insertHtml = (num: string, index: number): JSX.Element => (
+  const insertHtml = (num: string | number, index: number): JSX.Element => (
     <dd key={index + 1}>{ num }</dd>
   );
 

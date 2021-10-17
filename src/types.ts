@@ -1,6 +1,6 @@
 export interface IAppState {
   words: string[]
-  numbers: string[]
+  numbers: any[]
   hybrids: string[]
   isSortTime: boolean
   isSortAlphabet: boolean
