@@ -26,6 +26,20 @@ body {
         height: 28px
     };
 
+    .button {
+        border: none;
+        padding: 0 5px 0 5px;
+    }
+
+    .button.true {
+        background-color: rgb(35, 58, 73);
+        color: white;
+    }
+
+    .button.false {
+        background-color: rgb(87, 128, 155);
+    }
+
     .sort-select {
         height: 45px;
         padding: 10px 0 10px 0;

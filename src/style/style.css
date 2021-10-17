@@ -45,6 +45,17 @@ body .header {
           justify-content: flex-end;
   height: 28px;
 }
+body .button {
+  border: none;
+  padding: 0 5px 0 5px;
+}
+body .button.true {
+  background-color: #233a49;
+  color: white;
+}
+body .button.false {
+  background-color: #57809b;
+}
 body .sort-select {
   height: 45px;
   padding: 10px 0 10px 0;

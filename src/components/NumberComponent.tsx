@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from "react-redux";
 import { getIsSortAlphabet, getIsSortTime, getNumbers } from "../selectors";
 import { RootState } from "../store";
-import { renderJSX } from "./renderHelpers";
+import { renderJSX } from './renderHelpers';
 
 export const NumberComponent: React.FC = () => {
   const numberData: string[] = useSelector((state: RootState) => getNumbers(state.appStore));
@@ -19,14 +19,22 @@ export const NumberComponent: React.FC = () => {
 
   // const renderJSX = (
   //   renderList: string[],
-  //   insertHtml: (name: string, index: number) => JSX.Element
-  // ) => {
-  //   if(isSortTime)
-  //     return numberData.reverse().map((name, index) =>
-  //       insertHtml(name, index));
+  //   insertHtml: (name: string, index: number) => JSX.Element,
+  //   isSortTime: boolean,
+  //   isSortAlphabet: boolean): JSX.Element[] => {
+  //   let sortRenderList: string[] = [];
+  //   let temp: string[] = [];
+  //   if (isSortTime) {
+  //     temp = renderList.concat();
+  //     sortRenderList = temp.reverse();
+  //     return sortRenderList.map((name, index) =>
+  //     insertHtml(name, index));
+  //   }
   //   if (isSortAlphabet)
-  //     return numberData.sort((a, b) => a > b ? 1 : -1).map((name, index) =>
-  //       insertHtml(name, index));
+  //     temp = renderList.concat();
+  //     sortRenderList = temp.sort();
+  //     return sortRenderList.map((name, index) =>
+  //     insertHtml(name, index));
   // };
 
   return (

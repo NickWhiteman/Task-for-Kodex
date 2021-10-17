@@ -9,22 +9,20 @@ export const AppBoard: React.FC = () => {
   const dispatch = useDispatch();
   
   const valueValidation = (value: string) => {
-    const temp: number = Number(value);
-
     if (
-      value.match(/[0-9]/) &&
-      isNaN(temp) &&
-      !exceptionForInput.test(value)
+      /[0-9]/.test(value) &&
+      !exceptionForInput.test(value) &&
+      exceptionForNumbers.test(value)
     ) {
       dispatch(AppAction.setHybrids(value));
     } else if (
-      typeof temp === 'number' &&
+      /[0-9]/.test(value) &&
       !exceptionForNumbers.test(value) &&
       !exceptionForInput.test(value)
     ) {
       dispatch(AppAction.setNumbers(value));
     } else if (
-      isNaN(temp) &&
+      exceptionForNumbers.test(value) &&
       !exceptionForInput.test(value)
     ) {
       dispatch(AppAction.setWords(value));

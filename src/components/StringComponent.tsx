@@ -17,24 +17,25 @@ export const StringComponent: React.FC = () => {
   const isSortAlphabet: boolean = useSelector((state: RootState) =>
     getIsSortAlphabet(state.appStore));
   
-
+    
+    
   const countRepeatWords = (word: string) => {
     let count = 0;
     stringData.forEach(item => item === word && count++)
     if (count > 1)
       return (
         <span> x { count }</span>
-      )
+        )
     else return <></>
   };
-
+      
   const insertHtml = (word: string, index: number): JSX.Element => (
     <dd key={index}>
       {word}
       {countRepeatWords(word)}
     </dd>
   );
-
+  
   return (
     <>
       {

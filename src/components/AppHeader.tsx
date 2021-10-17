@@ -26,15 +26,16 @@ export const AppHeader: React.FC = () => {
     isSortTime &&
       dispatch(AppAction.setSortTime());
 
+    isSortAlphabet &&
+      dispatch(AppAction.setSortAlphabet());
+    
     dispatch(AppAction.setSortAlphabet());
   };
 
   return (
     <div className='header'>
-      {/* <select className='sort-select'> */}
-        <button onClick={sortTime}>Sort by time of addition</button>
-        <button onClick={sortAlphabet}>Sort alphabetically</button>
-      {/* </select> */}
+        <button className={`button ${isSortTime}`} onClick={sortTime}>Sort by time of addition</button>
+        <button className={`button ${isSortAlphabet}`} onClick={sortAlphabet}>Sort alphabetically</button>
     </div>
   )
 };

@@ -15,19 +15,34 @@ const AppStore = createSlice({
   initialState,
   reducers: {
     setWords(state, {payload}: PayloadAction<string>) {
-      state.words.push(payload);
+      // typeof payload === 'string'
+      state.words.push(payload)
+      // : state.words = [...payload]
     },
     setNumbers(state, { payload }: PayloadAction<string>) {
-      state.numbers.push(payload);
+      // typeof payload === 'string'
+        state.numbers.push(payload)
+        // : state.numbers = [...payload]
     },
     setHybrids(state, { payload }: PayloadAction<string>) {
-      state.hybrids.push(payload);
+      // typeof payload === 'string'
+      state.hybrids.push(payload)
+      // : state.hybrids = [...payload]
+    },
+    setWordsList(state, { payload }: PayloadAction<string[]>) {
+      state.words = payload;
+    },
+    setNumbersList(state, { payload }: PayloadAction<string[]>) {
+      state.numbers = payload;
+    },
+    setHybridsList(state, { payload }: PayloadAction<string[]>) {
+      state.hybrids = payload;
     },
     setSortTime(state) {
       state.isSortTime = !state.isSortTime;
     },
     setSortAlphabet(state) {
-      state.isSortAlphabet = !state.isSortTime;
+      state.isSortAlphabet = !state.isSortAlphabet;
     }
   }
 });
